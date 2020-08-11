@@ -1,0 +1,76 @@
+//TESTBENCH FOR DRAW 
+
+module testbench ;
+  reg px1,nx1,py1,ny1,clk,rst;
+  reg [1:0] in1;
+  wire win,lose,draw,prev;
+  wire [2:0] t0,t1,t2,t3,t4,t5,t6,t7,t8;
+  
+  game G (px1,nx1,py1,ny1,in1,clk,rst,win,lose,draw,t0,t1,t2,t3,t4,t5,t6,t7,t8);
+  
+  initial 
+    begin 
+      $dumpfile ("abc.vcd");
+      $dumpvars (0,testbench);
+    end
+  
+  initial 
+    begin
+      clk = 1'b0;
+      rst = 1'b1;
+      #1 rst = 1'b0;
+    end
+  
+  always #1 clk = ~clk;
+  
+  initial
+    begin
+      #2 in1[0] = 1'b1;
+      #2 in1[0] = 1'b0;
+      #2 px1 = 1'b1;
+      #2 px1 = 1'b0;
+      #2 in1[1] = 1'b1;
+      #2 in1[1] = 1'b0;
+      #2 px1 = 1'b1;
+      #2 px1 = 1'b0;
+      #2 in1[0] = 1'b1;
+      #2 in1[0] = 1'b0;
+      #2 nx1 = 1'b1;
+      #2 nx1 = 1'b0;
+      #2 ny1 = 1'b1;
+      #2 ny1 = 1'b0;
+      #2 in1[1] = 1'b1;
+      #2 in1[1] = 1'b0;
+      #2 ny1 = 1'b1;
+      #2 ny1 = 1'b0;
+      #2 px1 = 1'b1;
+      #2 px1 = 1'b0;
+      #2 in1[0] = 1'b1;
+      #2 in1[0] = 1'b0;
+      #2 nx1 = 1'b1;
+      #2 nx1 = 1'b0;
+      #2 nx1 = 1'b1;
+      #2 nx1 = 1'b0;
+      #2 in1[1] = 1'b1;
+      #2 in1[1] = 1'b0;
+      #2 px1 = 1'b1;
+      #2 px1 = 1'b0;
+      #2 in1[0] = 1'b1;
+      #2 in1[0] = 1'b0;
+      #2 py1 = 1'b1;
+      #2 py1 = 1'b0;
+      #2 px1 = 1'b1;
+      #2 px1 = 1'b0;
+      #2 in1[1] = 1'b1;
+      #2 in1[1] = 1'b0;
+      #2 nx1 = 1'b1;
+      #2 nx1 = 1'b0;
+      #2 nx1 = 1'b1;
+      #2 nx1 = 1'b0;
+      #2 in1[0] = 1'b1;
+      #2 in1[0] = 1'b0;
+     
+      #5 $finish;
+      
+    end
+endmodule
